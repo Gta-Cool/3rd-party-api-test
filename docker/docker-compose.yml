@@ -1,0 +1,13 @@
+version: "2"
+services:
+    application:
+        image: busybox
+        volumes:
+            - ../api:/var/www/api
+        tty: true
+    apache:
+        build: images/apache
+        volumes_from:
+            - application
+        ports:
+            - 80:80
