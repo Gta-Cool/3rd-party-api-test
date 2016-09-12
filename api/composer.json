@@ -1,10 +1,8 @@
 {
-    "name": "fabpot/silex-skeleton",
-    "description": "A pre-configured skeleton for the Silex microframework",
-    "license": "MIT",
-    "type": "project",
+    "name": "test/3rd-party-api",
+    "description": "A technical test about a 3rd party API. For more information, take a look of the README.",
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0",
         "silex/silex": "~2.0",
         "silex/web-profiler": "~2.0",
         "symfony/asset": "~2.8|3.0.*",
@@ -24,17 +22,6 @@
         "symfony/validator": "~2.8|3.0.*"
     },
     "autoload": {
-        "psr-0": { "": "src/" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        }
-    },
-    "scripts": {
-        "run": [
-            "echo 'Started web server on http://localhost:8888'",
-            "php -S localhost:8888 -t web"
-        ]
+        "psr-4": { "": "src/" }
     }
 }
