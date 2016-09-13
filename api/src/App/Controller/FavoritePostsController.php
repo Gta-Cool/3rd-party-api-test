@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Builder\ApiResponseBuilder;
 use App\Exception\BadRequestException;
 use App\Exception\InvalidParameterException;
+use App\Handler\FavoritePostsHandler;
 use App\Provider\FavoritePostIdsProvider;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FavoritePostsController
 {
@@ -16,17 +18,34 @@ class FavoritePostsController
     private $favoritePostIdsProvider;
 
     /**
-     * @param FavoritePostIdsProvider $favoritePostIdsProvider
+     * @var FavoritePostsHandler
      */
-    public function __construct(FavoritePostIdsProvider $favoritePostIdsProvider)
-    {
+    private $favoritePostsHandler;
+
+    /**
+     * @var ApiResponseBuilder
+     */
+    private $apiResponseBuilder;
+
+    /**
+     * @param FavoritePostIdsProvider $favoritePostIdsProvider
+     * @param FavoritePostsHandler    $favoritePostsHandler
+     * @param ApiResponseBuilder              $apiResponseBuilder
+     */
+    public function __construct(
+        FavoritePostIdsProvider $favoritePostIdsProvider,
+        FavoritePostsHandler $favoritePostsHandler,
+        ApiResponseBuilder $apiResponseBuilder
+    ) {
         $this->favoritePostIdsProvider = $favoritePostIdsProvider;
+        $this->favoritePostsHandler = $favoritePostsHandler;
+        $this->apiResponseBuilder = $apiResponseBuilder;
     }
 
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return Response
      */
     public function listAction(Request $request)
     {
@@ -36,17 +55,8 @@ class FavoritePostsController
             throw new BadRequestException($e->getMessage(), $e);
         }
 
-        return new JsonResponse([
-            [
-                'post_id' => 35,
-                'title' => 'Lorem ipsum',
-                'body' => 'Lorem ipsum dolor si amet.',
-                'user' => [
-                    'id' => 1,
-                    'name' => 'John',
-                    'email' => 'john@yipicaey.com',
-                ]
-            ],
-        ]);
+        $posts = $this->favoritePostsHandler->handle($favoritePostIdCollection);
+
+        return $this->apiResponseBuilder->buildResponse($posts);
     }
 }

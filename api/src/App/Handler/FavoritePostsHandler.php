@@ -74,15 +74,17 @@ class FavoritePostsHandler
             }
 
             $placeHolderPost = $this->getPlaceHolderPost($postId);
-            $placeHolderUser = null;
 
-            if ($placeHolderPost instanceof PlaceHolderPost && is_int($placeHolderPost->userId)) {
-                $placeHolderUser = $this->getPlaceHolderUser($placeHolderPost->userId);
+            if ($placeHolderPost instanceof PlaceHolderPost) {
+                $placeHolderUser = is_int($placeHolderPost->userId)
+                    ? $this->getPlaceHolderUser($placeHolderPost->userId)
+                    : null
+                ;
+
+                $post = $this->postBuilder->buildWithPlaceHolderData($placeHolderPost, $placeHolderUser);
+                $this->posts[$postId] = $post;
+                $posts[] = $post;
             }
-
-            $post = $this->postBuilder->buildWithPlaceHolderData($placeHolderPost, $placeHolderUser);
-            $this->posts[$postId] = $post;
-            $posts[] = $post;
         }
 
         return $posts;
