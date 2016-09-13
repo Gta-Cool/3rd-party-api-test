@@ -5,22 +5,22 @@ namespace App\Handler;
 use App\Builder\PostBuilder;
 use App\Model\Post;
 use App\Model\PostIdCollection;
-use PlaceOrder\Model\Post as PlaceHolderPost;
-use PlaceOrder\Model\User as PlaceHolderUser;
-use PlaceOrder\Repository\PostRepository;
-use PlaceOrder\Repository\UserRepository;
+use PlaceHolder\Model\Post as PlaceHolderPost;
+use PlaceHolder\Model\User as PlaceHolderUser;
+use PlaceHolder\Repository\PostRepository;
+use PlaceHolder\Repository\UserRepository;
 
 class FavoritePostsHandler
 {
     /**
      * @var PostRepository
      */
-    protected $placeOrderPostRepository;
+    protected $placeHolderPostRepository;
 
     /**
      * @var UserRepository
      */
-    protected $placeOrderUserRepository;
+    protected $placeHolderUserRepository;
 
     /**
      * @var PostBuilder
@@ -30,12 +30,12 @@ class FavoritePostsHandler
     /**
      * @var PlaceHolderPost[]
      */
-    private $placeOrderPosts = [];
+    private $placeHolderPosts = [];
 
     /**
      * @var PlaceHolderUser[]
      */
-    private $placeOrderUsers = [];
+    private $placeHolderUsers = [];
 
     /**
      * @var Post[]
@@ -43,17 +43,17 @@ class FavoritePostsHandler
     private $posts = [];
 
     /**
-     * @param PostRepository $placeOrderPostRepository
-     * @param UserRepository $placeOrderUserRepository
+     * @param PostRepository $placeHolderPostRepository
+     * @param UserRepository $placeHolderUserRepository
      * @param PostBuilder    $postBuilder
      */
     public function __construct(
-        PostRepository $placeOrderPostRepository,
-        UserRepository $placeOrderUserRepository,
+        PostRepository $placeHolderPostRepository,
+        UserRepository $placeHolderUserRepository,
         PostBuilder $postBuilder
     ) {
-        $this->placeOrderPostRepository = $placeOrderPostRepository;
-        $this->placeOrderUserRepository = $placeOrderUserRepository;
+        $this->placeHolderPostRepository = $placeHolderPostRepository;
+        $this->placeHolderUserRepository = $placeHolderUserRepository;
         $this->postBuilder = $postBuilder;
     }
 
@@ -73,11 +73,11 @@ class FavoritePostsHandler
                 continue;
             }
 
-            $placeHolderPost = $this->getPlaceOrderPost($postId);
+            $placeHolderPost = $this->getPlaceHolderPost($postId);
             $placeHolderUser = null;
 
             if ($placeHolderPost instanceof PlaceHolderPost && is_int($placeHolderPost->userId)) {
-                $placeHolderUser = $this->getPlaceOrderUser($placeHolderPost->userId);
+                $placeHolderUser = $this->getPlaceHolderUser($placeHolderPost->userId);
             }
 
             $post = $this->postBuilder->buildWithPlaceHolderData($placeHolderPost, $placeHolderUser);
@@ -93,14 +93,14 @@ class FavoritePostsHandler
      *
      * @return PlaceHolderPost|null
      */
-    protected function getPlaceOrderPost($postId)
+    protected function getPlaceHolderPost($postId)
     {
-        if (array_key_exists($postId, $this->placeOrderPosts)) {
-            return $this->placeOrderPosts[$postId];
+        if (array_key_exists($postId, $this->placeHolderPosts)) {
+            return $this->placeHolderPosts[$postId];
         }
 
-        $post = $this->placeOrderPostRepository->find($postId);
-        $this->placeOrderPosts[$postId] = $post;
+        $post = $this->placeHolderPostRepository->find($postId);
+        $this->placeHolderPosts[$postId] = $post;
 
         return $post;
     }
@@ -110,14 +110,14 @@ class FavoritePostsHandler
      *
      * @return PlaceHolderUser|null
      */
-    protected function getPlaceOrderUser($userId)
+    protected function getPlaceHolderUser($userId)
     {
-        if (array_key_exists($userId, $this->placeOrderUsers)) {
-            return $this->placeOrderUsers[$userId];
+        if (array_key_exists($userId, $this->placeHolderUsers)) {
+            return $this->placeHolderUsers[$userId];
         }
 
-        $user = $this->placeOrderUserRepository->find($userId);
-        $this->placeOrderUsers[$userId] = $user;
+        $user = $this->placeHolderUserRepository->find($userId);
+        $this->placeHolderUsers[$userId] = $user;
 
         return $user;
     }

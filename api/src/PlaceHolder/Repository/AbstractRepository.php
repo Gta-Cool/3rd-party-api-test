@@ -1,11 +1,11 @@
 <?php
 
-namespace PlaceOrder\Repository;
+namespace PlaceHolder\Repository;
 
-use PlaceOrder\Client\ClientInterface;
-use PlaceOrder\Exception\InvalidModelClassException;
-use PlaceOrder\Model\ModelClassInterface;
-use PlaceOrder\Model\ModelInterface;
+use PlaceHolder\Client\ClientInterface;
+use PlaceHolder\Exception\InvalidModelClassException;
+use PlaceHolder\Model\ModelClassInterface;
+use PlaceHolder\Model\ModelInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 abstract class AbstractRepository implements RepositoryInterface, ModelClassInterface

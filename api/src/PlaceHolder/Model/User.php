@@ -1,6 +1,6 @@
 <?php
 
-namespace PlaceOrder\Model;
+namespace PlaceHolder\Model;
 
 /**
  * DTO User object

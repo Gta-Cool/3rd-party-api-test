@@ -1,8 +1,8 @@
 <?php
 
-namespace PlaceOrder\Repository;
+namespace PlaceHolder\Repository;
 
-use PlaceOrder\Model\User;
+use PlaceHolder\Model\User;
 
 class UserRepository extends AbstractRepository implements RepositoryInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace PlaceOrder\Exception;
+namespace PlaceHolder\Exception;
 
 interface ExceptionInterface
 {

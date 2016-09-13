@@ -1,12 +1,12 @@
 <?php
 
-namespace PlaceOrder\Factory;
+namespace PlaceHolder\Factory;
 
-use PlaceOrder\Client\ClientInterface;
-use PlaceOrder\Exception\UnknownRepositoryNameException;
-use PlaceOrder\Repository\AbstractRepository;
-use PlaceOrder\Repository\PostRepository;
-use PlaceOrder\Repository\UserRepository;
+use PlaceHolder\Client\ClientInterface;
+use PlaceHolder\Exception\UnknownRepositoryNameException;
+use PlaceHolder\Repository\AbstractRepository;
+use PlaceHolder\Repository\PostRepository;
+use PlaceHolder\Repository\UserRepository;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class RepositoryFactory

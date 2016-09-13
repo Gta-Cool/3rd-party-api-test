@@ -1,13 +1,13 @@
 <?php
 
-namespace PlaceOrder\Client\Http;
+namespace PlaceHolder\Client\Http;
 
 use GuzzleHttp\ClientInterface as GuzzleClientInterface;
 use GuzzleHttp\Exception\ClientException;
-use PlaceOrder\Client\ClientInterface;
+use PlaceHolder\Client\ClientInterface;
 
 /**
- * PlaceOrder Http Client
+ * PlaceHolder Http Client
  */
 class Client implements ClientInterface
 {

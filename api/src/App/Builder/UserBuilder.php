@@ -3,7 +3,7 @@
 namespace App\Builder;
 
 use App\Model\User;
-use PlaceOrder\Model\User as PlaceHolderUser;
+use PlaceHolder\Model\User as PlaceHolderUser;
 
 class UserBuilder
 {

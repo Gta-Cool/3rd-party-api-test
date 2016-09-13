@@ -1,8 +1,8 @@
 <?php
 
-namespace PlaceOrder\Repository;
+namespace PlaceHolder\Repository;
 
-use PlaceOrder\Model\Post;
+use PlaceHolder\Model\Post;
 
 class PostRepository extends AbstractRepository implements RepositoryInterface
 {

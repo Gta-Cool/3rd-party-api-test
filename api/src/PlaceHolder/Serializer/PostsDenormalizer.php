@@ -1,8 +1,8 @@
 <?php
 
-namespace PlaceOrder\Serializer;
+namespace PlaceHolder\Serializer;
 
-use PlaceOrder\Model\Post;
+use PlaceHolder\Model\Post;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class PostsDenormalizer extends AbstractModelDenormalizer implements DenormalizerInterface

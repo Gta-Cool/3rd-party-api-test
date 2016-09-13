@@ -1,9 +1,9 @@
 <?php
 
-namespace PlaceOrder\Serializer;
+namespace PlaceHolder\Serializer;
 
-use PlaceOrder\Model\ModelClassInterface;
-use PlaceOrder\Model\ModelInterface;
+use PlaceHolder\Model\ModelClassInterface;
+use PlaceHolder\Model\ModelInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractModelDenormalizer implements DenormalizerInterface, ModelClassInterface
@@ -11,7 +11,7 @@ abstract class AbstractModelDenormalizer implements DenormalizerInterface, Model
     /**
      * @inheritDoc
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (null === $data || empty($data)) {
             return $data;

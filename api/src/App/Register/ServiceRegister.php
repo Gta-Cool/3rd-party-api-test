@@ -19,8 +19,8 @@ class ServiceRegister implements ServiceProviderInterface
 
         $app['app.handler.favorite_posts'] = function() use ($app) {
             return new FavoritePostsHandler(
-                $app['place_order.repository.post'],
-                $app['place_order.repository.user'],
+                $app['place_holder.repository.post'],
+                $app['place_holder.repository.user'],
                 $app['app.builder.post']
             );
         };

@@ -4,8 +4,8 @@ namespace App\Builder;
 
 use App\Exception\InvalidParameterException;
 use App\Model\Post;
-use PlaceOrder\Model\Post as PlaceHolderPost;
-use PlaceOrder\Model\User as PlaceHolderUser;
+use PlaceHolder\Model\Post as PlaceHolderPost;
+use PlaceHolder\Model\User as PlaceHolderUser;
 
 class PostBuilder
 {

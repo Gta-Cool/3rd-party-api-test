@@ -1,8 +1,8 @@
 <?php
 
-namespace PlaceOrder\Repository;
+namespace PlaceHolder\Repository;
 
-use PlaceOrder\Model\ModelInterface;
+use PlaceHolder\Model\ModelInterface;
 
 interface RepositoryInterface
 {

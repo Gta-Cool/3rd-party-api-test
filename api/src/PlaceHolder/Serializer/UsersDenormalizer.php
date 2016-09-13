@@ -1,8 +1,8 @@
 <?php
 
-namespace PlaceOrder\Serializer;
+namespace PlaceHolder\Serializer;
 
-use PlaceOrder\Model\User;
+use PlaceHolder\Model\User;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class UsersDenormalizer extends AbstractModelDenormalizer implements DenormalizerInterface

@@ -1,8 +1,8 @@
 <?php
 
-namespace PlaceOrder\Client;
+namespace PlaceHolder\Client;
 
-use PlaceOrder\Model\ModelInterface;
+use PlaceHolder\Model\ModelInterface;
 
 interface ClientInterface
 {
