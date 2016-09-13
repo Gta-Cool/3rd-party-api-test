@@ -4,7 +4,7 @@ namespace App\Handler;
 
 use App\Builder\PostBuilder;
 use App\Model\Post;
-use App\Model\PostIdCollection;
+use App\Model\Api\FavoritePosts;
 use PlaceHolder\Model\Post as PlaceHolderPost;
 use PlaceHolder\Model\User as PlaceHolderUser;
 use PlaceHolder\Repository\PostRepository;
@@ -58,15 +58,15 @@ class FavoritePostsHandler
     }
 
     /**
-     * @param PostIdCollection $postIds
+     * @param FavoritePosts $favoritePosts
      *
      * @return Post[]
      */
-    public function handle(PostIdCollection $postIds)
+    public function handle(FavoritePosts $favoritePosts)
     {
         $posts = [];
 
-        foreach ($postIds->getAll() as $postId) {
+        foreach ($favoritePosts->getIds() as $postId) {
 
             if (array_key_exists($postId, $this->posts)) {
                 $posts[] = $this->posts[$postId];

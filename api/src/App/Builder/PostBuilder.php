@@ -2,7 +2,7 @@
 
 namespace App\Builder;
 
-use App\Exception\InvalidParameterException;
+use App\Exception\InvalidArgumentException;
 use App\Model\Post;
 use PlaceHolder\Model\Post as PlaceHolderPost;
 use PlaceHolder\Model\User as PlaceHolderUser;
@@ -31,7 +31,7 @@ class PostBuilder
     public function buildWithPlaceHolderData(PlaceHolderPost $placeHolderPost, PlaceHolderUser $placeHolderUser = null)
     {
         if ($placeHolderUser instanceof PlaceHolderUser && $placeHolderPost->userId !== $placeHolderUser->id) {
-            new InvalidParameterException(
+            new InvalidArgumentException(
                 sprintf(
                     'Post userId "%s" should be the same than user id "%s"',
                     $placeHolderPost->userId,

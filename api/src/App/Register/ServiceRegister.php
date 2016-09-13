@@ -6,7 +6,7 @@ use App\Builder\ApiResponseBuilder;
 use App\Builder\PostBuilder;
 use App\Builder\UserBuilder;
 use App\Handler\FavoritePostsHandler;
-use App\Provider\FavoritePostIdsProvider;
+use App\Provider\FavoritePostsProvider;
 use App\Serializer\PostNormalizer;
 use App\Serializer\UserNormalizer;
 use Pimple\Container;
@@ -17,8 +17,8 @@ class ServiceRegister implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
-        $app['app.provider.favorite_post_ids'] = function() use ($app) {
-            return new FavoritePostIdsProvider($app['app.favorite_post_ids']);
+        $app['app.provider.favorite_posts'] = function() use ($app) {
+            return new FavoritePostsProvider($app['app.favorite_post_ids'], $app['validator']);
         };
 
         $app['app.handler.favorite_posts'] = function() use ($app) {

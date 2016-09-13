@@ -6,16 +6,16 @@ use App\Builder\ApiResponseBuilder;
 use App\Exception\BadRequestException;
 use App\Exception\InvalidParameterException;
 use App\Handler\FavoritePostsHandler;
-use App\Provider\FavoritePostIdsProvider;
+use App\Provider\FavoritePostsProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class FavoritePostsController
 {
     /**
-     * @var FavoritePostIdsProvider
+     * @var FavoritePostsProvider
      */
-    private $favoritePostIdsProvider;
+    private $favoritePostsProvider;
 
     /**
      * @var FavoritePostsHandler
@@ -28,16 +28,16 @@ class FavoritePostsController
     private $apiResponseBuilder;
 
     /**
-     * @param FavoritePostIdsProvider $favoritePostIdsProvider
-     * @param FavoritePostsHandler    $favoritePostsHandler
-     * @param ApiResponseBuilder              $apiResponseBuilder
+     * @param FavoritePostsProvider $favoritePostsProvider
+     * @param FavoritePostsHandler  $favoritePostsHandler
+     * @param ApiResponseBuilder    $apiResponseBuilder
      */
     public function __construct(
-        FavoritePostIdsProvider $favoritePostIdsProvider,
+        FavoritePostsProvider $favoritePostsProvider,
         FavoritePostsHandler $favoritePostsHandler,
         ApiResponseBuilder $apiResponseBuilder
     ) {
-        $this->favoritePostIdsProvider = $favoritePostIdsProvider;
+        $this->favoritePostsProvider = $favoritePostsProvider;
         $this->favoritePostsHandler = $favoritePostsHandler;
         $this->apiResponseBuilder = $apiResponseBuilder;
     }
@@ -50,7 +50,7 @@ class FavoritePostsController
     public function listAction(Request $request)
     {
         try {
-            $favoritePostIdCollection = $this->favoritePostIdsProvider->provide($request);
+            $favoritePostIdCollection = $this->favoritePostsProvider->provide($request);
         } catch (InvalidParameterException $e) {
             throw new BadRequestException($e->getMessage(), $e);
         }

@@ -12,7 +12,7 @@ class ControllerRegister implements ServiceProviderInterface
     {
         $app['app.controller.favorite_posts'] = function() use ($app) {
             return new FavoritePostsController(
-                $app['app.provider.favorite_post_ids'],
+                $app['app.provider.favorite_posts'],
                 $app['app.handler.favorite_posts'],
                 $app['app.builder.api_response']
             );
