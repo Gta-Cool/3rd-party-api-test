@@ -12,7 +12,9 @@
         "symfony/monolog-bridge": "~2.8|3.0.*",
         "symfony/process": "~2.8|3.0.*",
         "symfony/security": "~2.8|3.0.*",
-        "symfony/validator": "~2.8|3.0.*"
+        "symfony/validator": "~2.8|3.0.*",
+        "guzzlehttp/guzzle": "~6.2",
+        "symfony/serializer": "^3.1"
     },
     "require-dev": {
         "silex/web-profiler": "~2.0"
