@@ -6,18 +6,29 @@ use PlaceOrder\Model\ModelInterface;
 
 interface ClientInterface
 {
-    /**
-     * @param string $modelClass A model class
-     * @param string $id
-     *
-     * @return ModelInterface|null
-     */
-    public function get($modelClass, $id);
+    CONST DEFAULT_FORMAT = 'json';
 
     /**
-     * @param string $modelClass A model class
+     * @var array
+     */
+    const NULL_VALUE_BY_FORMAT = [
+        'json' => 'null',
+    ];
+
+    /**
+     * @param string $dataType
+     * @param string $id
+     * @param string $format
+     *
+     * @return string
+     */
+    public function get($dataType, $id, $format = self::DEFAULT_FORMAT);
+
+    /**
+     * @param string $dataType
+     * @param string $format
      *
      * @return ModelInterface[]
      */
-    public function getAll($modelClass);
+    public function getAll($dataType, $format = self::DEFAULT_FORMAT);
 }

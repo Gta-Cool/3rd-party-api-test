@@ -10,7 +10,7 @@ class PostsDenormalizer extends AbstractModelDenormalizer implements Denormalize
     /**
      * @inheritDoc
      */
-    protected function getModelClass()
+    public function getModelClass()
     {
         return Post::class;
     }

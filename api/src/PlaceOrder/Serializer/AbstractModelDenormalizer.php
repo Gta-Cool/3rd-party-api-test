@@ -2,10 +2,11 @@
 
 namespace PlaceOrder\Serializer;
 
+use PlaceOrder\Model\ModelClassInterface;
 use PlaceOrder\Model\ModelInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
-abstract class AbstractModelDenormalizer implements DenormalizerInterface
+abstract class AbstractModelDenormalizer implements DenormalizerInterface, ModelClassInterface
 {
     /**
      * @inheritDoc
@@ -50,11 +51,4 @@ abstract class AbstractModelDenormalizer implements DenormalizerInterface
      * @return ModelInterface
      */
     abstract protected function denormalizeOne(&$data);
-
-    /**
-     * Gets Model class.
-     *
-     * @return string
-     */
-    abstract protected function getModelClass();
 }

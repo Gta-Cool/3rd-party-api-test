@@ -10,7 +10,7 @@ class UsersDenormalizer extends AbstractModelDenormalizer implements Denormalize
     /**
      * @inheritDoc
      */
-    protected function getModelClass()
+    public function getModelClass()
     {
         return User::class;
     }
