@@ -38,3 +38,34 @@ implementing your code.
 approach that you’ve taken.
 - We’ll give more value to an unfinished application that is well structured than a finished
 one with spaghetti code.
+
+## What's Inside
+
+This application uses Silex, a light framework based on symfony components.
+I've used it because this micro-service is really light (only get data from a 3rd party API) and in this kind of situation, I like to use light frameworks instead of more complete frameworks like Symfony.
+
+I've also used some community libraries like:
+* *guzzlehttp/guzzle* For getting data from place holder API
+* *kevinrob/guzzle-cache-middleware* For caching these data and using cache mechanism provided by the API
+* *symfony/serializer* For deserializing place holder data or serializing our micro-service data
+* *symfony/validator* For validating query parameters
+
+The project implements the http_cache proxy from Symfony, I've used it because it works fine for testing purposes and also because I didn't want to set up a varnish, nginx or squid image.
+But in production, I should use one of them, of course, and to configure a new TrustedProxy.
+
+All caches (guzzle-cache-middleware and http_cache) are using filesystem cache provider, here as well because it was an easy solution to implement, but it exists a lot of providers like for Redis or Memcached.
+It might be easy to change this on configuration.
+
+For further information, just go to the [api/src/](api/src/) directory to find the source code.
+
+All the source code relating to the Application itself is on the [api/src/App/](api/src/App/) directory, and all the place holder client source code is on the [api/src/PlaceHolder/](api/src/PlaceHolder/) directory.
+Of course, all the dependency injection is configured on the Application and you can retrieve it on [api/src/App/app.php](api/src/App/app.php) file, or on the [registers](api/src/App/Register/) or silex providers.
+
+## Install
+
+First install composer ([instructions here](https://getcomposer.org/doc/00-intro.md)) if it's not already done.
+
+And then, go on the [api/](api/) directory to run:
+```bash
+composer install
+```
