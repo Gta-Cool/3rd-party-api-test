@@ -19,4 +19,4 @@ Debug::enable();
 $app = require __DIR__.'/../src/App/app.php';
 require __DIR__.'/../config/dev.php';
 require __DIR__.'/../src/App/controllers.php';
-$app->run();
+$app['http_cache']->run();
