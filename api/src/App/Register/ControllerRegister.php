@@ -8,6 +8,9 @@ use Pimple\ServiceProviderInterface;
 
 class ControllerRegister implements ServiceProviderInterface
 {
+    /**
+     * @param Container $app
+     */
     public function register(Container $app)
     {
         $app['app.controller.favorite_posts'] = function() use ($app) {

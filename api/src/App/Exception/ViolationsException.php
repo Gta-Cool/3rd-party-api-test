@@ -51,7 +51,7 @@ class ViolationsException extends RuntimeException implements ApiExceptionInterf
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getErrors()
     {

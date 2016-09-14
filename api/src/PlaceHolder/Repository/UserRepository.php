@@ -15,7 +15,7 @@ class UserRepository extends AbstractRepository implements RepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
      * @return User|null
      */
@@ -25,7 +25,7 @@ class UserRepository extends AbstractRepository implements RepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
      * @return User[]
      */

@@ -16,12 +16,16 @@ class FavoritePosts
 
     /**
      * @param array $ids
+     *
+     * @return $this
      */
     public function set(array $ids)
     {
         foreach ($ids as $id) {
             $this->addId($id);
         }
+
+        return $this;
     }
 
     /**

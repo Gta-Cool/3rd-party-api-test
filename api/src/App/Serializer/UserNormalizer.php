@@ -22,7 +22,7 @@ class UserNormalizer implements NormalizerInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function supportsNormalization($data, $format = null)
     {

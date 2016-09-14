@@ -27,7 +27,7 @@ class PostNormalizer implements NormalizerInterface, NormalizerAwareInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function supportsNormalization($data, $format = null)
     {

@@ -8,7 +8,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class PostsDenormalizer extends AbstractModelDenormalizer implements DenormalizerInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getModelClass()
     {

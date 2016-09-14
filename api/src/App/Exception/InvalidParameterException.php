@@ -41,7 +41,7 @@ class InvalidParameterException extends InvalidArgumentException implements ApiE
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getErrors()
     {

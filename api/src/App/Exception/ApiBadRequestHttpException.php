@@ -24,7 +24,7 @@ class ApiBadRequestHttpException extends BadRequestHttpException implements ApiH
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getErrors()
     {

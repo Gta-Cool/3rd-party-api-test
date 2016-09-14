@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 abstract class AbstractModelDenormalizer implements DenormalizerInterface, ModelClassInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
@@ -34,7 +34,7 @@ abstract class AbstractModelDenormalizer implements DenormalizerInterface, Model
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function supportsDenormalization($data, $type, $format = null)
     {

@@ -15,7 +15,7 @@ class PostRepository extends AbstractRepository implements RepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
      * @return Post|null
      */
@@ -25,7 +25,7 @@ class PostRepository extends AbstractRepository implements RepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
      * @return Post[]
      */

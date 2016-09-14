@@ -6,6 +6,9 @@ use PlaceHolder\Model\ModelInterface;
 
 interface ClientInterface
 {
+    /**
+     * @var string
+     */
     CONST DEFAULT_FORMAT = 'json';
 
     /**
