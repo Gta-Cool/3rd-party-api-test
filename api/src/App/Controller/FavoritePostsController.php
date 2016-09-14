@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Builder\ApiResponseBuilder;
-use App\Exception\BadRequestException;
-use App\Exception\InvalidParameterException;
+use App\Exception\ApiBadRequestHttpException;
+use App\Exception\ApiExceptionInterface;
 use App\Handler\FavoritePostsHandler;
 use App\Provider\FavoritePostsProvider;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,8 +58,8 @@ class FavoritePostsController
     {
         try {
             $favoritePostIdCollection = $this->favoritePostsProvider->provide($request);
-        } catch (InvalidParameterException $e) {
-            throw new BadRequestException($e->getMessage(), $e);
+        } catch (ApiExceptionInterface $e) {
+            throw new ApiBadRequestHttpException($e);
         }
 
         $posts = $this->favoritePostsHandler->handle($favoritePostIdCollection);

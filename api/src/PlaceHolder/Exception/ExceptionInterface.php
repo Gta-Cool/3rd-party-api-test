@@ -2,6 +2,8 @@
 
 namespace PlaceHolder\Exception;
 
-interface ExceptionInterface
+use Throwable;
+
+interface ExceptionInterface extends Throwable
 {
 }

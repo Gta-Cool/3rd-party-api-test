@@ -7,6 +7,7 @@ use App\Builder\PostBuilder;
 use App\Builder\UserBuilder;
 use App\Handler\FavoritePostsHandler;
 use App\Provider\FavoritePostsProvider;
+use App\Resolver\ErrorMessageResolver;
 use App\Serializer\PostNormalizer;
 use App\Serializer\UserNormalizer;
 use Pimple\Container;
@@ -38,7 +39,7 @@ class ServiceRegister implements ServiceProviderInterface
         };
 
         $app['app.builder.api_response'] = function() use ($app) {
-            return new ApiResponseBuilder($app['app.serializer']);
+            return new ApiResponseBuilder($app['app.serializer'], $app['app.resolver.error_message']);
         };
 
         $app['app.serializer.post_normalizer'] = function() use ($app) {
@@ -56,6 +57,10 @@ class ServiceRegister implements ServiceProviderInterface
             ], $app['serializer.normalizers']);
 
             return new Serializer($normalizers, $app['serializer.encoders']);
+        };
+
+        $app['app.resolver.error_message'] = function() use ($app) {
+            return new ErrorMessageResolver();
         };
     }
 }

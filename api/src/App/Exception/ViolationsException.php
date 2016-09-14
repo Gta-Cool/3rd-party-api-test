@@ -6,7 +6,7 @@ use Exception;
 use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationList;
 
-class ViolationsException extends RuntimeException implements ExceptionInterface
+class ViolationsException extends RuntimeException implements ApiExceptionInterface
 {
     /**
      * @var ConstraintViolationList
@@ -48,6 +48,14 @@ class ViolationsException extends RuntimeException implements ExceptionInterface
         }
 
         return $result;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getErrors()
+    {
+        return $this->getViolationsAsArray();
     }
 
     /**

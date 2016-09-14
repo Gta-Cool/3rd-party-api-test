@@ -45,7 +45,7 @@ class FavoritePostsProvider
         $ids = $request->query->get(static::QUERY_IDS_NAME, $this->defaultFavoritePostIds);
 
         if (!is_array($ids)) {
-            throw new InvalidParameterException('ids must be an array');
+            throw new InvalidParameterException(static::QUERY_IDS_NAME, 'array');
         }
 
         $favoritePosts = new FavoritePosts();

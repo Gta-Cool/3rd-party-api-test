@@ -2,6 +2,8 @@
 
 namespace App\Exception;
 
-interface ExceptionInterface
+use Throwable;
+
+interface ExceptionInterface extends Throwable
 {
 }
