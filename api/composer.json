@@ -4,17 +4,16 @@
     "require": {
         "php": ">=7.0",
         "silex/silex": "~2.0",
-        "silex/web-profiler": "~2.0",
-        "symfony/class-loader": "~2.8|3.0.*",
-        "symfony/config": "~2.8|3.0.*",
-        "symfony/debug": "~2.8|3.0.*",
-        "symfony/finder": "~2.8|3.0.*",
-        "symfony/monolog-bridge": "~2.8|3.0.*",
-        "symfony/process": "~2.8|3.0.*",
-        "symfony/security": "~2.8|3.0.*",
-        "symfony/validator": "~2.8|3.0.*",
+        "symfony/class-loader": "~3.1",
+        "symfony/config": "~3.1",
+        "symfony/debug": "~3.1",
+        "symfony/finder": "~3.1",
+        "symfony/monolog-bridge": "~3.1",
+        "symfony/process": "~3.1",
+        "symfony/security": "~3.1",
+        "symfony/validator": "~3.1",
         "guzzlehttp/guzzle": "~6.2",
-        "symfony/serializer": "^3.1"
+        "symfony/serializer": "~3.1"
     },
     "require-dev": {
         "silex/web-profiler": "~2.0"
