@@ -3,6 +3,7 @@
 namespace App\Builder;
 
 use App\Exception\ApiHttpExceptionInterface;
+use App\Exception\UnavailableFormat;
 use App\Resolver\ErrorMessageResolver;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -99,9 +100,11 @@ class ApiResponseBuilder
     {
         switch ($format) {
             case 'json':
-            default:
                 $response = new JsonResponse();
                 $response->setJson($dataAsString);
+                break;
+            default:
+                throw new UnavailableFormat(sprintf('"%s" is unavailable as format', $format));
         }
 
         return $response;
