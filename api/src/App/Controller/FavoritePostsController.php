@@ -13,6 +13,13 @@ use Symfony\Component\HttpFoundation\Response;
 class FavoritePostsController
 {
     /**
+     * Max age for cache control policy.
+     *
+     * @var int
+     */
+    const CACHE_MAX_AGE = 600;
+
+    /**
      * @var FavoritePostsProvider
      */
     private $favoritePostsProvider;
@@ -56,7 +63,22 @@ class FavoritePostsController
         }
 
         $posts = $this->favoritePostsHandler->handle($favoritePostIdCollection);
+        $response = $this->apiResponseBuilder->buildResponse($posts);
 
-        return $this->apiResponseBuilder->buildResponse($posts);
+        return $this->setCacheHeaders($response);
+    }
+
+    /**
+     * @param Response $response
+     *
+     * @return Response
+     */
+    protected function setCacheHeaders(Response $response)
+    {
+        $response->setPublic();
+        $response->setMaxAge(static::CACHE_MAX_AGE);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+
+        return $response;
     }
 }
