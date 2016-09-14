@@ -3,12 +3,17 @@
 namespace App\Register;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\HandlerStack;
+use Kevinrob\GuzzleCache\CacheMiddleware;
+use Kevinrob\GuzzleCache\Storage\Psr6CacheStorage;
+use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use PlaceHolder\Client\Http\Client;
 use PlaceHolder\Factory\RepositoryFactory;
 use PlaceHolder\Serializer\PostsDenormalizer;
 use PlaceHolder\Serializer\UsersDenormalizer;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Serializer\Serializer;
 
 class PlaceHolderRegister implements ServiceProviderInterface
@@ -25,9 +30,27 @@ class PlaceHolderRegister implements ServiceProviderInterface
      */
     protected function registerClient(Container $app)
     {
+        $app['place_holder.client.guzzle_cache_middleware'] = function() use ($app) {
+            return new CacheMiddleware(
+                new PrivateCacheStrategy(
+                    new Psr6CacheStorage(
+                        new FilesystemAdapter('guzzle', 0, $app['place_holder.client.param.filesystem_cache_directory'])
+                    )
+                )
+            );
+        };
+
+        $app['place_holder.client.guzzle_handler'] = function() use ($app) {
+            $handler = HandlerStack::create();
+            $handler->push($app['place_holder.client.guzzle_cache_middleware'], 'cache');
+
+            return $handler;
+        };
+
         $app['place_holder.client.guzzle'] = function() use ($app) {
             return new GuzzleClient([
                 'base_uri' => $app['place_holder.client.param.base_url'],
+                'handler' => $app['place_holder.client.guzzle_handler'],
             ]);
         };
 
