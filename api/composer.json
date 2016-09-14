@@ -6,6 +6,7 @@
         "silex/silex": "~2.0",
         "symfony/class-loader": "~3.1",
         "symfony/debug": "~3.1",
+        "symfony/monolog-bridge": "~3.1",
         "symfony/validator": "~3.1",
         "guzzlehttp/guzzle": "~6.2",
         "symfony/serializer": "~3.1",
@@ -13,7 +14,6 @@
         "symfony/cache": "~3.1"
     },
     "require-dev": {
-        "symfony/monolog-bridge": "~3.1",
         "silex/web-profiler": "~2.0"
     },
     "autoload": {

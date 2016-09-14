@@ -4,6 +4,7 @@ use App\Register\ControllerRegister;
 use App\Register\PlaceHolderRegister;
 use App\Register\ServiceRegister;
 use Silex\Application;
+use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\SerializerServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
@@ -11,6 +12,7 @@ use Silex\Provider\ValidatorServiceProvider;
 $app = new Application([
     'app.version' => '1.0.0',
 ]);
+$app->register(new MonologServiceProvider());
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new SerializerServiceProvider());
 $app->register(new ValidatorServiceProvider());
