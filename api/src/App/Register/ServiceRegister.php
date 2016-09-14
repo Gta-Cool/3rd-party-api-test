@@ -16,8 +16,14 @@ use Symfony\Component\Serializer\Serializer;
 
 class ServiceRegister implements ServiceProviderInterface
 {
+    /**
+     * @param Container $app
+     */
     public function register(Container $app)
     {
+        $this->registerBuilder($app);
+        $this->registerSerializer($app);
+
         $app['app.provider.favorite_posts'] = function() use ($app) {
             return new FavoritePostsProvider($app['app.favorite_post_ids'], $app['validator']);
         };
@@ -30,6 +36,16 @@ class ServiceRegister implements ServiceProviderInterface
             );
         };
 
+        $app['app.resolver.error_message'] = function() use ($app) {
+            return new ErrorMessageResolver();
+        };
+    }
+
+    /**
+     * @param Container $app
+     */
+    protected function registerBuilder(Container $app)
+    {
         $app['app.builder.user'] = function() use ($app) {
             return new UserBuilder();
         };
@@ -41,7 +57,13 @@ class ServiceRegister implements ServiceProviderInterface
         $app['app.builder.api_response'] = function() use ($app) {
             return new ApiResponseBuilder($app['app.serializer'], $app['app.resolver.error_message']);
         };
+    }
 
+    /**
+     * @param Container $app
+     */
+    protected function registerSerializer(Container $app)
+    {
         $app['app.serializer.post_normalizer'] = function() use ($app) {
             return new PostNormalizer();
         };
@@ -57,10 +79,6 @@ class ServiceRegister implements ServiceProviderInterface
             ], $app['serializer.normalizers']);
 
             return new Serializer($normalizers, $app['serializer.encoders']);
-        };
-
-        $app['app.resolver.error_message'] = function() use ($app) {
-            return new ErrorMessageResolver();
         };
     }
 }

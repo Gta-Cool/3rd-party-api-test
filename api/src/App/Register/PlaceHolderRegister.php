@@ -18,6 +18,9 @@ use Symfony\Component\Serializer\Serializer;
 
 class PlaceHolderRegister implements ServiceProviderInterface
 {
+    /**
+     * @param Container $app
+     */
     public function register(Container $app)
     {
         $this->registerClient($app);
