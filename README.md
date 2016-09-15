@@ -63,6 +63,23 @@ For further information, just go to the [api/src/](api/src/) directory to find t
 All the source code relating to the Application itself is on the [api/src/App/](api/src/App/) directory, and all the place holder client source code is on the [api/src/PlaceHolder/](api/src/PlaceHolder/) directory.
 Of course, all the dependency injection is configured on the Application and you can retrieve it on [api/src/App/app.php](api/src/App/app.php) file, or on the [registers](api/src/App/Register/) or silex providers.
 
+## How it Works
+
+![First client call without any cache](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRmF2b3JpdGUgcG9zdHMgU2VxdWVuY2UKCkNsaWVudC0-UmV2ZXJzZSBQcm94eTogQXNrcyBmb3IgZgAsDQpub3RlIG92ZXIgACIPRG9lc24ndCBoYXZlIGEgcmVzcG9uc2UgaW4gY2FjaGUKAFQNLT4zcmQgUGFydHkgQXBpAFYaABoNLT5QbGFjZSBIb2xkZXIAgRoLaW5mb3JtYXRpb24gbmVlZGVkCgAeDABdETIwMDogSQAqC3JldHVybmVkAIFVCwCBEg8AIgxhcmUAgU8GZCBpbnNpZGUgaHR0cCBjAIJGBQAZKmFnZ3JlZ2F0ZWQAgVcQAIJ-DwCBKgUAgzMPYXJlAIEiFACDOg0KICAgIFJlAIMDBmNvbnRhaW5zAIMJBiBoZWFkZXJzAB4FYW5kIGl0IGkAFQdkADMFQ2FjaGUtQ29udHJvbDoARgVwdWJsaWMsIG1heC1hZ2U9NjAwLCBtdXN0LXJldmFsaWRhdGUKZW5kIG5vdACDYBEAhGMGOiBSAIQRCXMAgm0K&s=modern-blue)
+
+Fig.1: A first client call at beginning without any cache.
+
+
+![A client call when the reverse proxy cached response is still fresh](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRmF2b3JpdGUgcG9zdHMgU2VxdWVuY2UKCkNsaWVudC0-K1JldmVyc2UgUHJveHk6IEFza3MgZm9yIGYALQ0Kbm90ZSBvdmVyIAAiD1Jlc3BvbnNlIGlzIHN0aWxsIGZyZXNoACYLM3JkIFBhcnR5IEFwaTogUmVxdWVzdCBkb2Vzbid0IHJlYWNoABcOAGMLUGxhY2UgSG9sZGVyOiBObyByADgHdG8ADw0AMgUAgT8NLT4tAIFfBjogQ2FjaGVkAIETBiByAIEmC3JldHVybmVkCg&s=modern-blue)
+
+Fig.2: A client call when the reverse proxy cached response is still fresh.
+
+
+![A client call when the reverse proxy cached response isn't fresh anymore](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRmF2b3JpdGUgcG9zdHMgU2VxdWVuY2UKCkNsaWVudC0-UmV2ZXJzZSBQcm94eTogQXNrcyBmb3IgZgAsDQpub3RlIG92ZXIgACIPUmVzcG9uc2UgaXNuJ3QgZnJlc2ggYW55bW9yZQoAUA0tPjNyZCBQYXJ0eSBBcGkAUhoAGg0tPlBsYWNlIEhvbGRlcgCBFgtpbmZvcm1hdGlvbiBuZWVkZWQKAB4MAF0RMzA0OiBOb3QgbW9kaWZpZWQAgUkLAIEKD0kAUAthcmUgZ2V0IGZyb20gaHR0cCBjAII1BSBjYWNoZQAaKmFnZ3JlZ2F0ZWQAgVAQAIJzDzIwMDoAgycQYXJlIHJldHVybgCBKg0Agy8NCiAgICBSZQCDBwZjb250YWlucwCBIAYgaGVhZGVycwAeBWFuZCB0aGUgbmV3IHZlcnNpb24gaQAiB2QAQAVDYWNoZS1Db250cm9sOgBTBXB1YmxpYywgbWF4LWFnZT02MDAsIG11c3QtcmV2YWxpZGF0ZQplbmQgbm90AINmEQCEZQYAhB4NAIFECg&s=modern-blue)
+
+Fig.3: A client call when the reverse proxy cached response isn't fresh anymore.
+
+
 ## How to Install
 
 First install composer ([instructions here](https://getcomposer.org/doc/00-intro.md)) if it's not already done.
