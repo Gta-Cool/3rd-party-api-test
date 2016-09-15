@@ -50,18 +50,20 @@ I've also used some community libraries like:
 * *symfony/serializer* For deserializing place holder data or serializing our micro-service data
 * *symfony/validator* For validating query parameters
 
-The project implements the http_cache proxy from Symfony, I've used it because it works fine for testing purposes and also because I didn't want to set up a varnish, nginx or squid image.
-But in production, I should use one of them, of course, and to configure a new TrustedProxy.
+The project implements the http_cache proxy from Symfony, I've used it because it works fine for testing purposes and during the development cycle.
+In production, a proper reverse proxy must be used like varnish, nginx or squid, in order to improve the performance and the application scalability.
+Of course a new TrustedProxy must be configured inside the application.
 
-All caches (guzzle-cache-middleware and http_cache) are using filesystem cache provider, here as well because it was an easy solution to implement, but it exists a lot of providers like for Redis or Memcached.
-It might be easy to change this on configuration.
+All caches (guzzle-cache-middleware and http_cache) are using filesystem cache providers, it is an easy solution to implement during development.
+In production, proper cache solutions or stores must be used like Redis or Memcached in order to improve scalability and performance, a distributed one could be a plus.
+Because project uses PSR6 (caching interface), this is quite easy to change it on the configuration, and to use another adapter instead of FileSystemAdapter one.
 
 For further information, just go to the [api/src/](api/src/) directory to find the source code.
 
 All the source code relating to the Application itself is on the [api/src/App/](api/src/App/) directory, and all the place holder client source code is on the [api/src/PlaceHolder/](api/src/PlaceHolder/) directory.
 Of course, all the dependency injection is configured on the Application and you can retrieve it on [api/src/App/app.php](api/src/App/app.php) file, or on the [registers](api/src/App/Register/) or silex providers.
 
-## Install
+## How to Install
 
 First install composer ([instructions here](https://getcomposer.org/doc/00-intro.md)) if it's not already done.
 
