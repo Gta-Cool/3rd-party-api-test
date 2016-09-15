@@ -88,3 +88,11 @@ And then, go on the [api/](api/) directory to run:
 ```bash
 composer install
 ```
+
+## How to Test
+
+### Online
+
+You can test this api online here: [api-test.gta-cool.fr/favorite_posts](http://api-test.gta-cool.fr/favorite_posts)
+
+It is possible to add a get array parameter `ids` to tell what are your favorite post, for example (31 and 23): [api-test.gta-cool.fr/favorite_posts?ids[0]=31&ids[1]=23](http://api-test.gta-cool.fr/favorite_posts?ids[0]=31&ids[1]=23)
