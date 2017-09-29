@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+    app:
+        image: gtacool/3rd-party-api-test
+        ports:
+            - 80:80
