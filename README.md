@@ -1,6 +1,8 @@
 # 3rd-party-api-test
 
-##Technical Test
+A test I had to do for a company during a recruitment process.
+
+## Technical Test
 
 Implementing and working with internal and external APIs is the core of our projects. The aim of this exercise is to test your problem solving skills and to see the approach that you take when developing greenfield projects.
 
